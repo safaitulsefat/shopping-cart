@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section id="full">
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div id="remove"   class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minus"  class="btn btn-default"><i  class="fas fa-minus"></i></button>
+                           <input type="text" id="incr" class="form-control text-center" value="1">
+                           <button id='plus'  class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$<span id="mobileprice">1219</span></h5>
+                        <img id="removemobile"  src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div id="removec" class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="caseminus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="cincr" type="text"  class="form-control text-center" value="1">
+                           <button  id="caseplus"   class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$<span id='caseprice'>59</span></h5>
+                        <img id="removecase"  src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$<span id="subtotal">1278</span></h5>
+                        <h5>$0</h5>
+                        <h5>$<span id="total">1278</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button id="checkout"  type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <div id="page" class='page'>
+      <h1>Thanks You</h1>
+   </div>
+   <script>
+      //plus btn mobile
+      const plusbtn = document.getElementById('plus');
+      plusbtn.addEventListener('click',function(){
+         //mobile quqntity
+         const increase = document.getElementById('incr').value;
+         const incr = parseFloat(increase);
+         const incras = incr + 1;
+         document.getElementById('incr').value = incras;
+         //mobile price
+         var number = Number(document.querySelector('#mobileprice').innerText);
+         var number = incras * 1219;
+         var Num = document.querySelector('#mobileprice').innerText = number;
+         // subtotal price
+         var Subtotal = parseFloat(document.getElementById('subtotal').innerText);
+         var subtotal = Subtotal + 1219;
+         document.getElementById('subtotal').innerText = subtotal;
+         //total price
+         var Total = parseFloat(document.getElementById('total').innerText);
+         var total = Total + 1219;
+         document.getElementById('total').innerText = total;
+        
+        
+         
+
+      });
+   //minus btn mobile
+      const minusbtn = document.getElementById('minus');
+      minusbtn.addEventListener('click',function(){
+         //mobile quqntity
+         const discrease = parseFloat(document.getElementById('incr').value);
+         const discreas = discrease - 1;
+         
+         if (discreas >= 0) {
+             document.getElementById('incr').value = discreas;
+         
+      //mobile price
+
+         var number = Number(document.getElementById('mobileprice').innerText);
+         var number = discreas * 1219;
+         document.getElementById('mobileprice').innerText = number;
+         
+         //subtotal
+         var Subtotal = parseFloat(document.getElementById('subtotal').innerText);
+         var subtotal = Subtotal - 1219;
+         document.getElementById('subtotal').innerText = subtotal;
+           //total
+         var Total = parseFloat(document.getElementById('total').innerText);
+         var total = Total - 1219;
+         document.getElementById('total').innerText = total;
+        
+         }
+
+      });
+      //case plusbtn
+      const caseplusbtn = document.getElementById('caseplus');
+       caseplusbtn.addEventListener('click',function(){
+          //case quantity
+         const increase = document.getElementById('cincr').value;
+         const incr = parseFloat(increase);
+         const incras = incr + 1;
+         document.getElementById('cincr').value = incras;
+         //case price
+         var number = Number(document.querySelector('#caseprice').innerText);
+         var number = incras * 59;
+         var Num = document.querySelector('#caseprice').innerText = number;
+         //subtotal
+         Subtotal = parseFloat(document.getElementById('subtotal').innerText);
+         var subtotal = Subtotal + 59;
+         document.getElementById('subtotal').innerText = subtotal;
+         //total
+         var Total = parseFloat(document.getElementById('total').innerText);
+         var total = Total + 59;
+         document.getElementById('total').innerText = total;
+   
+       });
+        //case minusbtn
+       const caseminusbtn = document.getElementById('caseminus');
+      caseminusbtn.addEventListener('click',function(){
+         //case quantity
+         const discrease = parseFloat(document.getElementById('cincr').value);
+         const discreas = discrease - 1;
+         
+         if (discreas >= 0) {
+             document.getElementById('cincr').value = discreas;
+         
+      
+         //case price
+         var number = Number(document.getElementById('caseprice').innerText);
+         var number = discreas * 59;
+         document.getElementById('caseprice').innerText = number;
+         
+         //subtotal
+         var Subtotal = parseFloat(document.getElementById('subtotal').innerText);
+         var subtotal = Subtotal - 59;
+         document.getElementById('subtotal').innerText = subtotal;
+         //total
+         var Total = parseFloat(document.getElementById('total').innerText);
+         var total = Total - 59;
+         document.getElementById('total').innerText = total;
+         }
+         
+      });
+      const removemobile = document.getElementById('removemobile');
+      removemobile.addEventListener('click',function(){
+         const Remove = document.getElementById('remove');
+         Remove.style.display = 'none';
+      })
+      const removecase = document.getElementById('removecase');
+      removecase.addEventListener('click',function(){
+         const Remove = document.getElementById('removec');
+         Remove.style.display = 'none';
+      })
+      const check = document.getElementById('checkout');
+      check.addEventListener('click',function(){
+         const all = document.getElementById('full');
+         all.style.display = 'none';
+         const page = document.getElementById('page');
+         page.style.display = 'block';
+      })
+   </script>
+</body>
+
+</html>
